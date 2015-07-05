@@ -3,6 +3,9 @@ package com.github.harverst.roper.model.fifthEdition;
 public enum FifthEditionSpeed
 {
   SPEED,
-  JUMP
+  JUMP,
+  FLY,
+  SWIM,
+  BURROW
 }
 

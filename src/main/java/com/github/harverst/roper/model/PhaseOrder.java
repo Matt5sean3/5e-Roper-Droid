@@ -13,5 +13,5 @@ public interface PhaseOrder<P>
    * @param original The unsorted collection
    * @return The collection after sorting into a list
    */
-  List<ScoreComponent<P> > order(Collection<ScoreComponent<P> > original);
+  public List<ScoreComponent<P>> order(Collection<ScoreComponent<P>> original);
 }
