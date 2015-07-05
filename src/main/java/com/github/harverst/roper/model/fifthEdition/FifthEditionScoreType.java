@@ -20,6 +20,8 @@ public enum FifthEditionScoreType implements BasicScoreGroupType
   MAX_HIT_DICE (FifthEditionHitDice.class),
   SPELL_SLOT(FifthEditionSpellSlot.class),
   MAX_SPELL_SLOT(FifthEditionSpellSlot.class),
+  SIZE(FifthEditionSize.class),
+  LANGUAGE(FifthEditionLanguage.class),
   CURRENCY(FifthEditionCurrency.class);
   public int size;
   // Populates using other enums
