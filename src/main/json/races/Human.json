@@ -1,0 +1,64 @@
+{
+  "config": [
+    "ADDITIONAL_LANGUAGE",
+    ""
+    ],
+  "ABILITIES": {
+    "STRENGTH": {
+      "phase": "BASE",
+      "type": "ADDITIVE",
+      "value": 1
+    },
+    "DEXTERITY": {
+      "phase": "BASE",
+      "type": "ADDITIVE",
+      "value": 1
+    },
+    "CONSTITUTION": {
+      "phase": "BASE",
+      "type": "ADDITIVE",
+      "value": 1
+    },
+    "INTELLIGENCE": {
+      "phase": "BASE",
+      "type": "ADDITIVE",
+      "value": 1
+    },
+    "WISDOM": {
+      "phase": "BASE",
+      "type": "ADDITIVE",
+      "value": 1
+    },
+    "CHARISMA": {
+      "phase": "BASE",
+      "type": "ADDITIVE",
+      "value": 1
+    }
+  },
+  "SPEED": {
+    "GROUND": {
+      "phase": "BASE",
+      "type": "ADDITIVE",
+      "value": 30
+    }
+  },
+  "SIZE": {
+    "": {
+      "phase": "BASE",
+      "type": "ADDITIVE",
+      "value": 1
+    }
+  },
+  "LANGUAGE": {
+    "COMMON": {
+      "phase": "BASE",
+      "type": "ADDITIVE",
+      "value": 1
+    },
+    "${ADDITIONAL_LANGUAGE}": {
+      "phase": "BASE",
+      "type": "ADDITIVE",
+      "value": 1
+    }
+  }
+}
