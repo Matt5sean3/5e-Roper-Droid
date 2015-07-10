@@ -1,0 +1,9 @@
+{
+  "PHASE": [
+    "BASE",
+    "ROLL",
+    "MODIFIER",
+    "RESISTANCE",
+    "FIXED"
+  ]
+}

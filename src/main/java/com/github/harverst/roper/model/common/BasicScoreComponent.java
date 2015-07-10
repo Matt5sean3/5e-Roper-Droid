@@ -2,6 +2,7 @@ package com.github.harverst.roper.model.common;
 
 import com.github.harverst.roper.model.ScoreComponent;
 import java.lang.Comparable;
+import java.util.Map;
 
 import org.json.JSONObject;
 import org.json.JSONException;
@@ -40,15 +41,17 @@ public abstract class BasicScoreComponent<P> implements ScoreComponent<P>
     return phase;
   }
   
-  // 
-  public static <P extends Enum<P> > ScoreComponent<P>
-    fromJson(Class<P> phaseType, JSONObject obj)
+  /**
+   *
+   */
+  public static <P> ScoreComponent<P>
+    fromJson(Map<String, P> phaseMap, JSONObject obj)
   {
     try
     {
       // Needs some sort of phaseType
       int value = obj.getInt("value");
-      P phase = valueOf(phaseType, obj.getString("phase"));
+      P phase = phaseMap.get(obj.getString("phase"));
       switch(valueOf(BasicComponentType.class, obj.getString("type")))
       {
       case ADDITIVE:
@@ -68,6 +71,11 @@ public abstract class BasicScoreComponent<P> implements ScoreComponent<P>
   }
 }
 
+// The only way I can think to possibly make this not a compile-time enum 
+// would be by use of class loaders to dynamically load all the component
+// types
+
+// I might actually change the design to work that way
 enum BasicComponentType
 {
   ADDITIVE,

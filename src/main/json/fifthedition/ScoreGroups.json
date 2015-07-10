@@ -1,0 +1,142 @@
+{
+  "ABILITY": [
+    "STRENGTH",
+    "DEXTERITY",
+    "CONSTITUTION",
+    "INTELLIGENCE",
+    "WISDOM",
+    "CHARISMA"
+  ],
+  "SAVING_THROW": [
+    "STRENGTH",
+    "DEXTERITY",
+    "CONSTITUTION",
+    "INTELLIGENCE",
+    "WISDOM",
+    "CHARISMA"
+  ],
+  "SKILL": [
+    "ACROBATICS",
+    "ANIMAL_HANDLING",
+    "ARCANA",
+    "ATHLETICS",
+    "DECEPTION",
+    "HISTORY",
+    "INSIGHT",
+    "INTIMIDATION",
+    "INVESTIGATION",
+    "MEDICINE",
+    "NATURE",
+    "PERCEPTION",
+    "PERFORMANCE",
+    "PERSUASION",
+    "RELIGION",
+    "SLEIGHT_OF_HAND",
+    "STEALTH",
+    "SURVIVAL"
+  ],
+  "ARMOR_CLASS": [
+    "ARMOR_CLASS"
+  ],
+  "INITIATIVE": [
+    "INITIATIVE"
+  ],
+  "SPEED": [
+    "GROUND",
+    "JUMP",
+    "FLY",
+    "SWIM",
+    "BURROW"
+  ],
+  "HIT_DICE": [
+    "D4",
+    "D6",
+    "D8",
+    "D10",
+    "D12",
+    "D20"
+  ],
+  "MAX_HIT_DICE": [
+    "D4",
+    "D6",
+    "D8",
+    "D10",
+    "D12",
+    "D20"
+  ],
+  "SPELL_SLOT": [
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "L6",
+    "L7",
+    "L8",
+    "L9"
+  ],
+  "MAX_SPELL_SLOT": [
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "L6",
+    "L7",
+    "L8",
+    "L9"
+  ],
+  "SIZE": [
+    "FINE",
+    "DIMINUTIVE",
+    "TINY",
+    "SMALL",
+    "MEDIUM",
+    "LARGE",
+    "HUGE",
+    "GARGANTUAN",
+    "COLOSSAL"
+  ],
+  "LANGUAGE": [
+    "COMMON",
+    "DWARVEN",
+    "ELVISH",
+    "GIANT",
+    "GNOMISH",
+    "GOBLIN",
+    "HALFLING",
+    "ORC",
+    "ABYSSAL",
+    "CELESTIAL",
+    "DRACONIC",
+    "DEEP_SPEECH",
+    "INFERNAL",
+    "PRIMORDIAL",
+    "SYLVAN",
+    "UNDERCOMMON",
+    "THIEVES_CANT"
+  ],
+  "CURRENCY": [
+    "COPPER",
+    "SILVER",
+    "ELECTRUM",
+    "GOLD",
+    "PLATINUM"
+  ],
+  "DAMAGE_RESISTANCE":
+  [
+    "ACID",
+    "BLUDGEONING",
+    "COLD",
+    "FIRE",
+    "FORCE",
+    "LIGHTNING",
+    "NECROTIC", 
+    "PIERCING",
+    "POISON",
+    "PSYCHIC",
+    "RADIANT",
+    "SLASHING",
+    "THUNDER"
+  ]
+}

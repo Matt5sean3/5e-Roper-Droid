@@ -3,10 +3,12 @@ package com.github.harverst.roper.model;
 import java.lang.Enum;
 import java.util.List;
 
+// TODO: refactor due to name collision with java.lang.Character
+
 /**
  * Highly abstract and parameterized interface used to define characters.
  *
- * The template parameter S could be an enum that lists the different
+ * The template parameter S is a score group type
  * types of scores available in the game system referenced.
  *
  * The template parameter, P, defines the phases that can be used to
