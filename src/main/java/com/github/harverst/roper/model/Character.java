@@ -14,7 +14,7 @@ import java.util.List;
  * The template parameter, P, defines the phases that can be used to
  * order a score, usually an enum or numeric class.
  */
-public interface Character<S, P>
+public interface Character<P>
 {
   /**
    * Retrieves a score group of the given type.
@@ -24,7 +24,7 @@ public interface Character<S, P>
    *
    * @param group The type of group being sought.
    */
-  public ScoreGroup<P> getScoreGroup(S group);
+  public ScoreGroup<P> getScoreGroup(ScoreGroupType group);
   
   /**
    * Retrieves a score from the given type.
@@ -34,21 +34,21 @@ public interface Character<S, P>
    * @param group The type of score for a finite set of scores desired
    * @param ordinal The index in the order of the score
    */
-  public Score<P> getScore(S group, int ordinal);
+  public Score<P> getScore(ScoreGroupType group, int ordinal);
   /**
    * Adds a set of components to the given group.
    * 
    * @param group The type of group to composite with.
    * @param component The components to add
    */
-  public void addGroupComponent(S group, List<ScoreComponent<P> > component);
+  public void addGroupComponent(ScoreGroupType group, List<ScoreComponent<P> > component);
   /**
    * Removes the components from the given group.
    *
    * @param group The type of group to remove the component from.
    * @param component The components to remove
    */
-  public void removeGroupComponent(S group, List<ScoreComponent<P> > component);
+  public void removeGroupComponent(ScoreGroupType group, List<ScoreComponent<P> > component);
   /**
    * Adds a capability to the character.
    *

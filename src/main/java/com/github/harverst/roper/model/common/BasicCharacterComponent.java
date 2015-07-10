@@ -3,6 +3,7 @@ package com.github.harverst.roper.model.common;
 import com.github.harverst.roper.model.Character;
 import com.github.harverst.roper.model.CharacterComponent;
 import com.github.harverst.roper.model.ScoreComponent;
+import com.github.harverst.roper.model.ScoreGroupType;
 
 import java.lang.Enum;
 import java.lang.String;
@@ -21,15 +22,15 @@ import org.json.JSONException;
 
 public abstract class BasicCharacterComponent
 {
-  public static <S extends BasicScoreGroupType, P> CharacterComponent<S, P>
-    fromJson(List<S> scoreGroups, Map<String, P> phases, String source)
+  public static <P> CharacterComponent<P>
+    fromJson(List<ScoreGroupType> scoreGroups, Map<String, P> phases, String source)
     throws JSONException
   {
     JSONObject obj = new JSONObject(source);
     return new BasicCharacterJsonComponent(scoreGroups, phases, obj);
   }
-  public static <S extends BasicScoreGroupType, P> CharacterComponent<S, P>
-    fromFile(List<S> scoreGroups, List<P> phases, String source)
+  public static <P> CharacterComponent<P>
+    fromFile(List<ScoreGroupType> scoreGroups, List<P> phases, String source)
     throws JSONException
   {
     // TODO: implement
@@ -40,16 +41,16 @@ public abstract class BasicCharacterComponent
 /**
  * 
  */
-class BasicCharacterJsonComponent<S extends BasicScoreGroupType, P>
-  implements CharacterComponent<S, P>
+class BasicCharacterJsonComponent<P>
+  implements CharacterComponent<P>
 {
   // Not sure how to make this part work now
-  Map<S, List<ScoreComponent<P> > > scoreComponents;
-  public BasicCharacterJsonComponent(List<S> scoreGroups, 
+  Map<ScoreGroupType, List<ScoreComponent<P> > > scoreComponents;
+  public BasicCharacterJsonComponent(List<ScoreGroupType> scoreGroups, 
     Map<String, P> phaseMap, JSONObject json)
   {
     scoreComponents = new HashMap();
-    for(S scoreGroup : scoreGroups)
+    for(ScoreGroupType scoreGroup : scoreGroups)
     {
       try
       {
@@ -80,17 +81,17 @@ class BasicCharacterJsonComponent<S extends BasicScoreGroupType, P>
     }
   }
   
-  public void composite(Character<S, P> c)
+  public void composite(Character<P> c)
   {
-    for(Map.Entry<S, List<ScoreComponent<P> > > component : 
+    for(Map.Entry<ScoreGroupType, List<ScoreComponent<P> > > component : 
       scoreComponents.entrySet())
     {
       c.addGroupComponent(component.getKey(), component.getValue());
     }
   }
-  public void seperate(Character<S, P> c)
+  public void seperate(Character<P> c)
   {
-    for(Map.Entry<S, List<ScoreComponent<P> > > component : 
+    for(Map.Entry<ScoreGroupType, List<ScoreComponent<P> > > component : 
       scoreComponents.entrySet())
     {
       c.removeGroupComponent(component.getKey(), component.getValue());

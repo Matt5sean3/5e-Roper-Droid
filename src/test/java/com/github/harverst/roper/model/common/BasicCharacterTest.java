@@ -17,7 +17,7 @@ public class BasicCharacterTest
   public void hasProvidedGroups()
   {
     // uses integer keys, uses integer phase ordering
-    Character<TestScoreGroupType, Integer> noob = 
+    Character<Integer> noob = 
       new BasicCharacter(allOf(TestScoreGroupType.class));
     assertEquals("First enum size is 6", 6, 
       TestScoreGroupType.ABILITIES.getSize());
@@ -27,7 +27,7 @@ public class BasicCharacterTest
   @Test
   public void hasScores()
   {
-    Character<TestScoreGroupType, Integer> noob = 
+    Character<Integer> noob = 
       new BasicCharacter(allOf(TestScoreGroupType.class));
     PhaseOrder<Integer> order = new LowToHighPhaseOrder();
     assertEquals("ABILITY SCORE 0", 0, 
@@ -66,7 +66,7 @@ public class BasicCharacterTest
   @Test
   public void shouldRecordModification()
   {
-    Character<TestScoreGroupType, Integer> noob = 
+    Character<Integer> noob = 
       new BasicCharacter(allOf(TestScoreGroupType.class));
     List<ScoreComponent<Integer> > base = new ArrayList();
     base.add(new AdditiveScoreComponent(0, 10));

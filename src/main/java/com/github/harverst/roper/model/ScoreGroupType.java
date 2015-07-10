@@ -1,9 +1,9 @@
-package com.github.harverst.roper.model.common;
+package com.github.harverst.roper.model;
 
 import java.util.List;
 import java.lang.String;
 
-public interface BasicScoreGroupType
+public interface ScoreGroupType
 {
   public String getName();
   public int getSize();

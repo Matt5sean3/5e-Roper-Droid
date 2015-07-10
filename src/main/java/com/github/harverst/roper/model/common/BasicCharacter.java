@@ -6,6 +6,7 @@ import com.github.harverst.roper.model.ScoreComponent;
 import com.github.harverst.roper.model.ScoreGroup;
 import com.github.harverst.roper.model.Action;
 import com.github.harverst.roper.model.Event;
+import com.github.harverst.roper.model.ScoreGroupType;
 import com.github.harverst.roper.model.
   ScoreGroupComponentSizeMismatchException;
 
@@ -19,25 +20,25 @@ import java.util.HashSet;
 import java.util.ArrayList;
 import static java.util.EnumSet.allOf;
 
-public class BasicCharacter<S extends BasicScoreGroupType, P> implements Character<S, P>
+public class BasicCharacter<P> implements Character<P>
 {
 
-  private Map<S, ScoreGroup<P> > groupMap;
+  private Map<ScoreGroupType, ScoreGroup<P> > groupMap;
   private List<Action> actions;
   private List<Event> history;
   private List<Event> failedHistory;
   /**
    * Uses a set (no repeating members) of group
    */
-  public BasicCharacter(Set<S> groups)
+  public BasicCharacter(Set<ScoreGroupType> groups)
   {
     // I don't really like how BasicScoreGroupType works right now
     groupMap = new HashMap();
     actions = new ArrayList();
     history = new ArrayList();
-    for(Iterator<S> it = groups.iterator(); it.hasNext();)
+    for(Iterator<ScoreGroupType> it = groups.iterator(); it.hasNext();)
     {
-      S key = it.next();
+      ScoreGroupType key = it.next();
       ScoreGroup<P> group = new BasicScoreGroup<P>();
       for(int c = 0; c < key.getSize(); c++)
       {
@@ -47,7 +48,7 @@ public class BasicCharacter<S extends BasicScoreGroupType, P> implements Charact
     }
   }
   
-  public Score<P> getScore(S groupKey, int ordinal)
+  public Score<P> getScore(ScoreGroupType groupKey, int ordinal)
   {
     // Expand the ScoreGroup until it's large enough
     ScoreGroup<P> group = groupMap.get(groupKey);
@@ -61,15 +62,15 @@ public class BasicCharacter<S extends BasicScoreGroupType, P> implements Charact
    *
    * @return The score group asked for.
    */
-  public ScoreGroup<P> getScoreGroup(S group)
+  public ScoreGroup<P> getScoreGroup(ScoreGroupType group)
   {
     return groupMap.get(group);
   }
   
-  public void addGroupComponent(S group, 
+  public void addGroupComponent(ScoreGroupType group, 
     List<ScoreComponent<P> > modification)
   {
-    Event evt = new CharacterCompositingEvent<S, P>(this, group, modification);
+    Event evt = new CharacterCompositingEvent<P>(this, group, modification);
     history.add(evt);
     if(!evt.apply())
     {
@@ -77,10 +78,10 @@ public class BasicCharacter<S extends BasicScoreGroupType, P> implements Charact
     }
   }
 
-  public void removeGroupComponent(S group, 
+  public void removeGroupComponent(ScoreGroupType group, 
     List<ScoreComponent<P> > modification)
   {
-    Event evt = new CharacterDecompositingEvent<S, P>(this, group, modification);
+    Event evt = new CharacterDecompositingEvent<P>(this, group, modification);
     history.add(evt);
     if(!evt.apply())
     {
@@ -125,19 +126,19 @@ public class BasicCharacter<S extends BasicScoreGroupType, P> implements Charact
 /**
  * An event utilized internally to handle adding components
  */
-class CharacterCompositingEvent<S, P> implements Event
+class CharacterCompositingEvent<P> implements Event
 {
-  Character<S, P> owner;
+  Character<P> owner;
   List<ScoreComponent<P> > component;
-  S group;
+  ScoreGroupType group;
   /**
    * This constructor needs the owner and the component.
    *
    * @param theOwner The owner of the event.
    * @param theComponent The component added by the event.
    */
-  public CharacterCompositingEvent(Character<S, P> theOwner, S theGroup, 
-    List<ScoreComponent<P> > theComponents)
+  public CharacterCompositingEvent(Character<P> theOwner, 
+    ScoreGroupType theGroup, List<ScoreComponent<P> > theComponents)
   {
     owner = theOwner;
     group = theGroup;
@@ -180,10 +181,10 @@ class CharacterCompositingEvent<S, P> implements Event
  *
  * Effectively reverses apply and rollback
  */
-class CharacterDecompositingEvent<S, P> extends CharacterCompositingEvent<S, P>
+class CharacterDecompositingEvent<P> extends CharacterCompositingEvent<P>
 {
-  public CharacterDecompositingEvent(Character<S, P> theOwner, S theGroup, 
-    List<ScoreComponent<P> > theComponents)
+  public CharacterDecompositingEvent(Character<P> theOwner, 
+    ScoreGroupType theGroup, List<ScoreComponent<P> > theComponents)
   {
     super(theOwner, theGroup, theComponents);
   }
@@ -202,11 +203,11 @@ class CharacterDecompositingEvent<S, P> extends CharacterCompositingEvent<S, P>
 /**
  * 
  */
-class CharacterAddActionEvent<S, P> implements Event
+class CharacterAddActionEvent<P> implements Event
 {
-  public Character<S, P> owner;
+  public Character<P> owner;
   public Action action;
-  public CharacterAddActionEvent(Character<S, P> theOwner, Action theAction)
+  public CharacterAddActionEvent(Character<P> theOwner, Action theAction)
   {
     owner = theOwner;
     action = theAction;
@@ -226,9 +227,9 @@ class CharacterAddActionEvent<S, P> implements Event
 /**
  * 
  */
-class CharacterRemoveActionEvent<S, P> extends CharacterAddActionEvent<S, P>
+class CharacterRemoveActionEvent<P> extends CharacterAddActionEvent<P>
 {
-  public CharacterRemoveActionEvent(Character<S, P> theOwner, Action theAction)
+  public CharacterRemoveActionEvent(Character<P> theOwner, Action theAction)
   {
     super(theOwner, theAction);
   }
