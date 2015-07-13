@@ -20,6 +20,10 @@ import java.util.HashSet;
 import java.util.ArrayList;
 import static java.util.EnumSet.allOf;
 
+import org.json.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONException;
+
 public class BasicCharacter<P> implements Character<P>
 {
 
@@ -197,6 +201,20 @@ class CharacterDecompositingEvent<P> extends CharacterCompositingEvent<P>
   public boolean rollback()
   {
     return super.apply();
+  }
+  public static <P> Character<P> fromJson(JSONObject obj)
+    throws JSONException
+  {
+    Set<ScoreGroupType> scores = new HashSet();
+    // Grab the array defining the names of the groups
+    JSONArray groups = obj.getJSONArray("SCORE_GROUPS");
+    // Grab each group
+    for(int c = 0; c < groups.length(); c++)
+    {
+      String name = groups.getString(c);
+      scores.add(BasicScoreGroupType.fromJson(name, obj.getJSONArray(name)));
+    }
+    return new BasicCharacter(scores);
   }
 }
 

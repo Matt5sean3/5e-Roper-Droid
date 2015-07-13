@@ -1,4 +1,18 @@
 {
+  "SCORE_GROUPS": [
+    "ABILITY",
+    "SAVING_THROW",
+    "SKILL",
+    "ARMOR_CLASS",
+    "INITIATIVE",
+    "SPEED",
+    "HIT_DICE",
+    "MAX_HIT_DICE",
+    "SIZE",
+    "LANGUAGE",
+    "CURRENCY",
+    "DAMAGE_RESISTANCE"
+  ],
   "ABILITY": [
     "STRENGTH",
     "DEXTERITY",
@@ -13,7 +27,9 @@
     "CONSTITUTION",
     "INTELLIGENCE",
     "WISDOM",
-    "CHARISMA"
+    "CHARISMA",
+    "SPELL_SLOT",
+    "MAX_SPELL_SLOT"
   ],
   "SKILL": [
     "ACROBATICS",
