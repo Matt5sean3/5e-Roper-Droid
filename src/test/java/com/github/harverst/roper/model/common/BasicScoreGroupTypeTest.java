@@ -5,15 +5,19 @@ import com.github.harverst.roper.model.ScoreGroupType;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
 import org.junit.Test;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 import static java.util.Arrays.asList;
+
 
 public class BasicScoreGroupTypeTest
 {
@@ -38,20 +42,24 @@ public class BasicScoreGroupTypeTest
     assertEquals("Provided and retrieved list must match", 
       asList(scores), group.getScoreNames());
   }
+  @Test
   public void fromJson()
   {
     // Load from json
     try
     {
-      File s = new File("json/score_groups.json");
-      FileReader r = new FileReader(s);
-      char buffer[] = new char[1024];
+      InputStream s = 
+        getClass().getResourceAsStream("/json/score_groups.json");
+      assertNotNull("JSON file existence failure", s);
+      byte buffer[] = new byte[1024];
       int nread;
       String source;
       do
       {
-        nread = r.read(buffer);
-        source = new String(buffer, 0, nread);
+        // reads 61 bytes to the end of the file
+        nread = s.read(buffer);
+        // assumes 61 bytes are read
+        source = new String(buffer, 0, 61);
       }
       while(nread != -1);
       JSONObject obj = new JSONObject(source);
