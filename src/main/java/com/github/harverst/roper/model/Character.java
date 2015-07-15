@@ -35,6 +35,7 @@ public interface Character<P>
    * @param ordinal The index in the order of the score
    */
   public Score<P> getScore(ScoreGroupType group, int ordinal);
+
   /**
    * Adds a set of components to the given group.
    * 
@@ -42,6 +43,7 @@ public interface Character<P>
    * @param component The components to add
    */
   public void addGroupComponent(ScoreGroupType group, List<ScoreComponent<P> > component);
+
   /**
    * Removes the components from the given group.
    *
@@ -49,18 +51,21 @@ public interface Character<P>
    * @param component The components to remove
    */
   public void removeGroupComponent(ScoreGroupType group, List<ScoreComponent<P> > component);
+
   /**
    * Adds a capability to the character.
    *
    * @param anAction The capability being added to the character.
    */
   public void addAction(Action anAction);
+
   /**
    * Removes a capability from the character.
    *
    * @param anAction The capability being removed from the character.
    */
   public void removeAction(Action anAction);
+
   /**
    * Gets the set of actions the character is capable.
    * 
@@ -68,12 +73,14 @@ public interface Character<P>
    * Only case in which it might not match up is while out of battle
    */
   public List<Action> getActions();
+
   /**
    * Log of actions that have happened to the character in chronological order.
    *
    * @return A full list of events usable to rollback a character entirely.
    */
   public List<Event> getHistory();
+
   /**
    * Logs actions that have failed, such as by throwing an exception.
    *

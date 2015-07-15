@@ -1,0 +1,14 @@
+{
+  "Q": {
+    "A": {
+      "PHASE": "0",
+      "type": "ADDITIVE",
+      "value": 1
+    },
+    "D": {
+      "PHASE": "0",
+      "type": "ADDITIVE",
+      "value": 2
+    }
+  }
+}

@@ -9,6 +9,7 @@ import java.lang.Enum;
 import java.lang.String;
 import java.lang.Class;
 import java.util.List;
+import java.util.Set;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
@@ -52,7 +53,7 @@ public class BasicCharacterComponent<P>
   }
 
   public static <P> CharacterComponent<P> fromJson(JSONObject obj, 
-    List<ScoreGroupType> scoreGroups, Map<String, P> phaseMap)
+    Set<ScoreGroupType> scoreGroups, Map<String, P> phaseMap)
   {
     Map<ScoreGroupType, List<ScoreComponent<P> > > components = new HashMap();
     for(ScoreGroupType scoreGroup : scoreGroups)
@@ -87,7 +88,7 @@ public class BasicCharacterComponent<P>
     return new BasicCharacterComponent(components);
   }
   public static <P> CharacterComponent<P>
-    fromFile(List<ScoreGroupType> scoreGroups, List<P> phases, String source)
+    fromFile(Set<ScoreGroupType> scoreGroups, List<P> phases, String source)
     throws JSONException
   {
     // TODO: implement
