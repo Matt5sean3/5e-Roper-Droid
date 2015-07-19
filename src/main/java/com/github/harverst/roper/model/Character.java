@@ -2,6 +2,7 @@ package com.github.harverst.roper.model;
 
 import java.lang.Enum;
 import java.util.List;
+import java.util.Set;
 
 // TODO: refactor due to name collision with java.lang.Character
 
@@ -23,9 +24,20 @@ public interface Character<P>
    * the returned value will not be added to the history log.
    *
    * @param group The type of group being sought.
+   * @return The score group for that type.
    */
   public ScoreGroup<P> getScoreGroup(ScoreGroupType group);
   
+  /**
+   * Retrieves a set of all the score group types used by the character.
+   *
+   * Necessary so that the score groups can be known without being there for
+   * the character's creation.
+   *
+   * @return the set of score group types
+   */
+  public Set<ScoreGroupType> getScoreGroupTypes();
+
   /**
    * Retrieves a score from the given type.
    *
@@ -33,6 +45,7 @@ public interface Character<P>
    *
    * @param group The type of score for a finite set of scores desired
    * @param ordinal The index in the order of the score
+   * @return the score object at that index for that group or null
    */
   public Score<P> getScore(ScoreGroupType group, int ordinal);
 

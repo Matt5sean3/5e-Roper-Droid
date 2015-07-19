@@ -54,14 +54,10 @@ public class BasicScoreGroupTypeTest
       byte buffer[] = new byte[1024];
       int nread;
       String source;
-      do
-      {
-        // reads 61 bytes to the end of the file
-        nread = s.read(buffer);
-        // assumes 61 bytes are read
-        source = new String(buffer, 0, 61);
-      }
-      while(nread != -1);
+      // reads 94 bytes to the end of the file
+      nread = s.read(buffer);
+      // assumes 94 bytes are read
+      source = new String(buffer, 0, 94);
       JSONObject obj = new JSONObject(source);
       ScoreGroupType group = BasicScoreGroupType.fromJson("Q", obj.getJSONArray("Q"));
       assertEquals("Score group name should be Q", "Q", group.getName());

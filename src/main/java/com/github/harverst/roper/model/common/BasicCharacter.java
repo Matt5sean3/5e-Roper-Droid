@@ -40,9 +40,8 @@ public class BasicCharacter<P> implements Character<P>
     groupMap = new HashMap();
     actions = new ArrayList();
     history = new ArrayList();
-    for(Iterator<ScoreGroupType> it = groups.iterator(); it.hasNext();)
+    for(ScoreGroupType key : groups)
     {
-      ScoreGroupType key = it.next();
       ScoreGroup<P> group = new BasicScoreGroup<P>();
       for(int c = 0; c < key.getSize(); c++)
       {
@@ -69,6 +68,11 @@ public class BasicCharacter<P> implements Character<P>
   public ScoreGroup<P> getScoreGroup(ScoreGroupType group)
   {
     return groupMap.get(group);
+  }
+
+  public Set<ScoreGroupType> getScoreGroupTypes()
+  {
+    return groupMap.keySet();
   }
   
   public void addGroupComponent(ScoreGroupType group, 
@@ -124,6 +128,23 @@ public class BasicCharacter<P> implements Character<P>
   public List<Event> getFailedHistory()
   {
     return failedHistory;
+  }
+  /**
+   * Creates a character from a JSON object
+   */
+  public static <P> Character<P> fromJson(JSONObject obj)
+    throws JSONException
+  {
+    Set<ScoreGroupType> scores = new HashSet();
+    // Grab the array defining the names of the groups
+    JSONArray groups = obj.getJSONArray("SCORE_GROUPS");
+    // Grab each group
+    for(int c = 0; c < groups.length(); c++)
+    {
+      String name = groups.getString(c);
+      scores.add(BasicScoreGroupType.fromJson(name, obj.getJSONArray(name)));
+    }
+    return new BasicCharacter(scores);
   }
 }
 
@@ -201,20 +222,6 @@ class CharacterDecompositingEvent<P> extends CharacterCompositingEvent<P>
   public boolean rollback()
   {
     return super.apply();
-  }
-  public static <P> Character<P> fromJson(JSONObject obj)
-    throws JSONException
-  {
-    Set<ScoreGroupType> scores = new HashSet();
-    // Grab the array defining the names of the groups
-    JSONArray groups = obj.getJSONArray("SCORE_GROUPS");
-    // Grab each group
-    for(int c = 0; c < groups.length(); c++)
-    {
-      String name = groups.getString(c);
-      scores.add(BasicScoreGroupType.fromJson(name, obj.getJSONArray(name)));
-    }
-    return new BasicCharacter(scores);
   }
 }
 

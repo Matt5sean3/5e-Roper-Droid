@@ -8,7 +8,14 @@ import java.util.List;
 import java.util.ArrayList;
 import static java.util.EnumSet.allOf;
 
+import java.io.InputStream;
+import java.io.IOException;
+import org.json.JSONObject;
+import org.json.JSONException;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 import org.junit.Test;
 
 public class BasicCharacterTest
@@ -24,6 +31,7 @@ public class BasicCharacterTest
     assertEquals("Second enum size is 10", 10, 
       TestScoreGroupType.SKILLS.getSize());
   }
+
   @Test
   public void hasScores()
   {
@@ -63,6 +71,7 @@ public class BasicCharacterTest
     assertEquals("SKILLS SCORE 9", 0, 
       noob.getScore(TestScoreGroupType.SKILLS, 9).getValue(order));
   }
+
   @Test
   public void shouldRecordModification()
   {
@@ -93,6 +102,33 @@ public class BasicCharacterTest
       noob.getScore(TestScoreGroupType.ABILITIES, 5).getValue(order));
     // Check that the change was recorded correctly
     assertEquals("Added to history", 1, noob.getHistory().size());
+  }
+
+  @Test
+  public void fromJsonWorks()
+  {
+    try
+    {
+      InputStream s = getClass().getResourceAsStream("/json/score_groups.json");
+      assertNotNull("JSON file existence failure", s);
+      byte buffer[] = new byte[1024];
+      int nread;
+      String source;
+      // assume reading 94 bytes
+      nread = s.read(buffer);
+      source = new String(buffer, 0, 94);
+      JSONObject obj = new JSONObject(source);
+      Character<Integer> c = BasicCharacter.fromJson(obj);
+      assertEquals("json file has 1 score group", 1, c.getScoreGroupTypes().size());
+    }
+    catch(JSONException e)
+    {
+      fail("JSON: " + e.getMessage());
+    }
+    catch(IOException e)
+    {
+      fail("IO: " + e.getMessage());
+    }
   }
 }
 
