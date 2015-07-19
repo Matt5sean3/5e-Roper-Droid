@@ -29,7 +29,9 @@ class StringIntegerSet extends AbstractSet<Map.Entry<String, Integer> >
 {
   public Iterator<Map.Entry<String, Integer> > iterator()
   {
-    return new IntegerEntryIterator();
+    // Should make getting to small numbers fairly quick
+    // Note: this is a hack to make it run reasonably quickly, setting the iterator base at -20
+    return new IntegerEntryIterator(-20);
   }
   public int size()
   {
@@ -86,6 +88,10 @@ class IntegerEntryIterator implements Iterator<Map.Entry<String, Integer> >
   public IntegerEntryIterator()
   {
     value = MIN_VALUE;
+  }
+  public IntegerEntryIterator(int startingPoint)
+  {
+    value = startingPoint;
   }
   public boolean hasNext()
   {

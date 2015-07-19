@@ -89,7 +89,6 @@ public class BasicCharacterComponent<P>
   }
   public static <P> CharacterComponent<P>
     fromFile(Set<ScoreGroupType> scoreGroups, List<P> phases, String source)
-    throws JSONException
   {
     // TODO: implement
     return null;
