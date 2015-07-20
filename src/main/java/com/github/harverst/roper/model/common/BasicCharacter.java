@@ -42,12 +42,7 @@ public class BasicCharacter<P> implements Character<P>
     history = new ArrayList();
     for(ScoreGroupType key : groups)
     {
-      ScoreGroup<P> group = new BasicScoreGroup<P>();
-      for(int c = 0; c < key.getSize(); c++)
-      {
-        group.add(new BasicScore<P>());
-      }
-      groupMap.put(key, group);
+      groupMap.put(key, new BasicScoreGroup<P>(key));
     }
   }
   

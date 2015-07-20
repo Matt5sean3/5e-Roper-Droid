@@ -16,5 +16,11 @@ public interface ScoreGroup<P> extends List<Score<P> >
    */
   public void removeComponent(List<ScoreComponent<P> > mod)
     throws ScoreGroupComponentSizeMismatchException;
+  /**
+   * Gets the type of the score group.
+   *
+   * @return type of the group.
+   */
+  public ScoreGroupType getType();
 }
 
