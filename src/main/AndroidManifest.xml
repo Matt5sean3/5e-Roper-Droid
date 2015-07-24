@@ -4,12 +4,36 @@
       android:versionCode="1"
       android:versionName="1">
     <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
-        <activity android:name="Roper5eDroid"
+        <activity android:name="com.github.harverst.roper.Roper5eDroid"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity 
+            android:name="com.github.harverst.roper.view.CreditsActivity"
+            android:label="@string/title_credits_activity"
+            android:parentActivityName="com.github.harverst.roper.Roper5eDroid">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.github.harverst.roper.Roper5eDroid" />
+        </activity>
+        <activity
+            android:name="com.github.harverst.roper.view.CharacterListActivity"
+            android:label="@string/title_character_list_activity"
+            android:parentActivityName="com.github.harverst.roper.Roper5eDroid">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.github.harverst.roper.Roper5eDroid" />
+        </activity>
+        <activity
+            android:name="com.github.harverst.roper.view.CharacterOverviewActivity"
+            android:label="@string/title_character_overview_activity"
+            android:parentActivityName="com.github.harverst.roper.view.CharacterListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.github.harverst.roper.view.CharacterListActivity" />
         </activity>
     </application>
 </manifest>

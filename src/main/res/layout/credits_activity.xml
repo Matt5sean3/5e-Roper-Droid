@@ -5,16 +5,9 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-    <Button
+    <TextView
+        android:text="@string/credits_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/character_list_button_text"
-        android:onClick="openCharacterListActivity"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/credits_button_text"
-        android:onClick="openCreditsActivity"
         />
 </LinearLayout>

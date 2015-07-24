@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Activity Titles -->
     <string name="app_name">Roper5eDroid</string>
+    <string name="title_character_list_activity">Character List</string>
+    <string name="title_character_overview_activity">Character Overview</string>
+    <string name="title_credits_activity">Credits</string>
     
     <!-- Main Screen Options -->
-    <string name="character_list">Character List</string>
+    <string name="character_list_button_text">Character List</string>
+    <string name="credits_button_text">Credits</string>
+
+    <!-- Credits Screen Text -->
+    <string name="credits_text">
+    Roper designed and programmed by Matthew Balch, Eli Woods, and Max Redmond
+    </string>
     
     <!-- Character List Screen Options -->
-    <string name="create_character">Create Character</string>
-    <string name="view_character">View Character</string>
-    <string name="import_character">Import Character</string>
+    <string name="create_character_button_text">Create</string>
+    <string name="character_overview_button_text">View</string>
+    <string name="import_character_button_text">Import</string>
 
     <!-- View Character Screen Options -->
-    <string name="export_character">Export Character</string>
     <string name="scores">Scores</string>
     <string name="actions">Actions</string>
 </resources>
