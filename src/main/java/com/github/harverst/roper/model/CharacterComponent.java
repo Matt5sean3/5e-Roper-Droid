@@ -15,6 +15,7 @@ public interface CharacterComponent<P>
    * @param character The character being composited.
    */
   public void composite(Character<P> character);
+
   /**
    * Removes information that composes this piece of the character.
    *

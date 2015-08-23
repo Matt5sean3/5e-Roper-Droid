@@ -26,5 +26,11 @@ public interface Score<P>
    * @param mod a component previously added to this score
    */
   public void removeComponent(ScoreComponent<P> component);
+  /**
+   * Scores must always have names to label them.
+   *
+   * @return the name of the score
+   */
+  public String getName();
 }
 

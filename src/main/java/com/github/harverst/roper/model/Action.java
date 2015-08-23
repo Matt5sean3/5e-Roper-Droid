@@ -8,12 +8,24 @@ import java.lang.Enum;
 public interface Action
 {
   /**
-   * Perform the action
+   * Gets the name of the action.
+   *
+   * @return name of the action.
    */
-  public void forward();
+  public String getName();
+  
   /**
-   * Undo the action
+   * Actions should have descriptions.
+   *
+   * @return text description of the action.
    */
-  public void reverse();
+  public String getDescription();
+
+  /**
+   * Perform the action
+   *
+   * @param actors A list of characters the action is applied to.
+   */
+  public void perform(List<Character> actors);
 }
 

@@ -18,25 +18,25 @@ import java.util.Set;
 public interface Character<P>
 {
   /**
-   * Retrieves a score group of the given type.
+   * Retrieves a score group with the given name.
    *
    * Note, this should be primarily used read-only as modifiers applied via
    * the returned value will not be added to the history log.
    *
-   * @param group The type of group being sought.
-   * @return The score group for that type.
+   * @param group The name of the group being sought.
+   * @return The score group with the given name.
    */
-  public ScoreGroup<P> getScoreGroup(ScoreGroupType group);
+  public ScoreGroup<P> getScoreGroup(String group);
   
   /**
-   * Retrieves a set of all the score group types used by the character.
+   * Retrieves a set of all the score groups used by the character.
    *
    * Necessary so that the score groups can be known without being there for
    * the character's creation.
    *
-   * @return the set of score group types
+   * @return the set of score groups
    */
-  public Set<ScoreGroupType> getScoreGroupTypes();
+  public Set<ScoreGroup> getScoreGroups();
 
   /**
    * Retrieves a score from the given type.
@@ -102,5 +102,10 @@ public interface Character<P>
    * @return A full list of list of failed actions.
    */
   public List<Event> getFailedHistory();
+
+  /**
+   * Characters may have slots of varying types.
+   */
+  public <C> List<Slot<C> > getSlots(String name);
 }
 

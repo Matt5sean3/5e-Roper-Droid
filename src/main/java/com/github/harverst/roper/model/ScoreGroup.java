@@ -1,26 +1,25 @@
 package com.github.harverst.roper.model;
 
 import java.util.List;
+import java.util.Map;
 
-public interface ScoreGroup<P> extends List<Score<P> >
+public interface ScoreGroup<P> extends Map<String, Score<P> >
 {
   /**
    * Adds a list of components to the contained elements.
    *
    * In implementation, if the size doesn't match, no change should be enacted.
    */
-  public void addComponent(List<ScoreComponent<P> > mod) 
-    throws ScoreGroupComponentSizeMismatchException;
+  public void addComponent(Map<String, ScoreComponent<P> > mod);
   /**
    * Removes a list of components from the contained elements.
    */
-  public void removeComponent(List<ScoreComponent<P> > mod)
-    throws ScoreGroupComponentSizeMismatchException;
+  public void removeComponent(Map<String, ScoreComponent<P> > mod);
   /**
-   * Gets the type of the score group.
+   * Score groups must have names.
    *
-   * @return type of the group.
+   * @return the name of the score group.
    */
-  public ScoreGroupType getType();
+  public String getName();
 }
 

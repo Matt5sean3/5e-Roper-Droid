@@ -3,11 +3,19 @@ package com.github.harverst.roper.model;
 public interface Event
 {
   /**
-   * Causes the event to occur.
+   * Returns the action that created the event.
    *
-   * @return whether the event applies successfully.
+   * @return the action that created this event.
    */
-  public boolean apply();
+  public Action getAction();
+  
+  /**
+   * Returns the character component associated with this event.
+   *
+   * @return the character component associated with this event.
+   */
+  public CharacterComponent getComponent();
+  
   /**
    * Reverts the event.
    *
